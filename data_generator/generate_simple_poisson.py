@@ -23,4 +23,4 @@ def generate_data():
     return df
 
 dfr = generate_data()
-dfr.to_csv('../temp.csv',sep=';')
+dfr.to_csv('temp.csv',sep=';')
