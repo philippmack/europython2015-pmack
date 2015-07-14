@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from replenishment.replenishment_rules import order_expectation_replenishment, replenishment 
-from stock_simulation import *
+from simulation.stock_simulation import *
 from prediction.predict import * 
 import sys
 
