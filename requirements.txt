@@ -1,0 +1,5 @@
+pandas==0.16.1
+numpy==1.9.2
+voluptuous==0.8.7
+pytest==2.7.1
+pytest-cov==1.8.1
