@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def simple_prediction(df, groupkey,shift_value):
+def simple_prediction(df, groupkey, window, shift_value):
      
     df['PREDICTION'] = df.groupby(groupkey)['SALES'].transform( lambda x :  x.shift(shift_value) )
     
