@@ -1,14 +1,14 @@
 import pandas as pd
 import numpy as np
 
-def simple_prediction(df, groupkey):
+def simple_prediction(df, groupkey,shift_value):
      
-    df['PREDICTION'] = df.groupby('PRODUCT_ID')['SALES'].transform( lambda x : x.shift(1) )
+    df['PREDICTION'] = df.groupby(groupkey)['SALES'].transform( lambda x :  x.shift(shift_value) )
     
     return df
 
-def rmean_prediction(df, groupkey, window):
+def rmean_prediction(df, groupkey, window, shift_value):
 
-    df['PREDICTION'] = df.groupby('PRODUCT_ID')['SALES'].transform( lambda x : pd.rolling_mean(x,window=window).shift(1) )
+    df['PREDICTION'] = df.groupby(groupkey)['SALES'].transform( lambda x :  pd.rolling_mean(x,window=window).shift(shift_value) )
 
     return df
