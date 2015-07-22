@@ -1,21 +1,30 @@
 import pandas as pd
 import numpy as np
-from replenishment.replenishment_rules import order_expectation_replenishment, replenishment 
+from replenishment.replenishment_rules import *
 from stock_simulation import *
 from prediction.predict import * 
 import sys
 
-def simulate_per_quantile(quantile):
+def simulate_wrapper(arguments):
+   return simulate_per_quantile(*arguments)
+
+def simulate_per_quantile(quantile, arguments_partial):
+
+   '''
+   simulation interface
+:param quantile: quantile of distribution
+:return: excess and out of stock rate
+'''
 
    df = pd.read_csv('temp.csv',sep=';')
    df = df.sort(['PRODUCT_ID','DATE'])
    df = df.reset_index()
 
-   prediction = "rmean_prediction"
+   prediction = arguments_partial['simulation']['prediction']['model']
    prediction_func = eval(prediction)
    prediction_func(df,'PRODUCT_ID',5, 0)
 
-   replenishment_rule="replenishment"
+   replenishment_rule=arguments_partial['simulation']['replenishment']['model']
    replenishment_rule_func = eval(replenishment_rule)
 
    df['ORDER'] = df['PREDICTION'].apply(lambda x : replenishment_rule_func(0,0,quantile,x))
