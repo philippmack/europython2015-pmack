@@ -24,7 +24,12 @@ simulation_schema=Schema({
     'prediction': {
             'model': str,
             'startdate': check_date,
-     }
+            'enddate': check_date
+     },
+    'replenishment': {
+             'model': str
+    },
+    'input_file' : str
 })
 
 def test_file(yamlconfig, types):

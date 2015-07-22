@@ -1,9 +1,9 @@
 simulation :
-    quantiles: [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98, 99]
+    quantiles: [50,]
     prediction:
         model: 'simple_prediction'
         startdate: '2014-01-02'
         endate: '2015-01-01'
     replenishment:
-        model: 'replenishment'
+        model: 'order_one_replenishment'
     input_file: 'temp.csv'
