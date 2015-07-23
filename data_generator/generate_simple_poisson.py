@@ -16,7 +16,7 @@ def generate_data(number_of_products,start,end):
     '''
     product = np.arange(number_of_products)
     date_rng = pd.date_range(start,end,freq='D')
-    product_rand_sales = np.random.randint(1,10,100)
+    product_rand_sales = np.random.randint(1,10,number_of_products)
 
     df = pd.DataFrame(columns=['PRODUCT_ID','DATE','SALES'])
 
