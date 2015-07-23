@@ -1,0 +1,7 @@
+replenishment :
+    quantiles: 70
+    prediction:
+        model: 'simple_prediction'
+    replenishment:
+        model: 'replenishment'
+    input_file: 'temp.csv'

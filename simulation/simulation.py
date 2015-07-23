@@ -12,13 +12,11 @@ def simulate_per_quantile(quantile, arguments_partial):
 
    '''
    simulation interface
-:param quantile: quantile of distribution
-:return: excess and out of stock rate
-'''
+   :param quantile: quantile of distribution
+   :return: excess and out of stock rate
+   '''
 
-   df = pd.read_csv('temp.csv',sep=';')
-   df = df.sort(['PRODUCT_ID','DATE'])
-   df = df.reset_index()
+   df = arguments_partial['simulation_df']
 
    prediction = arguments_partial['simulation']['prediction']['model']
    prediction_func = eval(prediction)

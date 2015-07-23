@@ -32,10 +32,23 @@ simulation_schema=Schema({
     'input_file' : str
 })
 
+
+replenishment_schema=Schema({
+    'quantiles': [All(Coerce(int), Range(1, 100), msg='not a valid quantile')],
+    'prediction': {
+            'model': str
+     },
+    'replenishment': {
+            'model': str
+    },
+    'input_file' : str
+})
+
 def test_file(yamlconfig, types):
     if types=='simulation':
         simulation_schema(yamlconfig['simulation'])
-
+    if types=='replenishemnt':
+        replenishment_schema(yamlconfig['replenishment'])
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

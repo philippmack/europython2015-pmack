@@ -2,7 +2,6 @@ __author__ = 'pmack'
 
 def stock_simulation_rule(stock_yesterday,sales,incoming):
     '''
-
     :param stock_yesterday: last known stock amount
     :param sales: simulated sales (truth)
     :param incoming: incoming goods
