@@ -16,3 +16,7 @@ def test_prediction_rmean():
     result = pr.rmean_prediction(df,'PRODUCT_ID',5,1)
     npt.assert_array_equal(result['PREDICTION'], [np.nan]*5 + [2.0])
 
+def test_prediction_ewma():
+    df = pd.DataFrame( { 'PRODUCT_ID' : 1 , 'DATE' : pd.date_range('1/1/2011', periods=6, freq='D'), 'SALES' : [1,1,1,1,1,1]})
+    result = pr.ewma_prediction(df,'PRODUCT_ID',5,1)
+    npt.assert_array_equal(result['PREDICTION'], [np.nan]*1 + [1,1,1,1,1])

@@ -4,24 +4,19 @@ from replenishment_rules import *
 from prediction.predict import *
 import sys
 
-def order(arguments_partial):
+def order(df, config):
 
-   df = pd.read_csv('temp.csv',sep=';')
-   df = df[df['DATE']<='2015-03-01']
-   df = df.sort(['PRODUCT_ID','DATE'])
-   df = df.reset_index()
-
-   prediction = arguments_partial['simulation']['prediction']['model']
+   prediction = config['replenishment']['prediction']['model']
    prediction_func = eval(prediction)
-   prediction_func(df,'PRODUCT_ID',5, 0)
 
-   replenishment_rule=arguments_partial['simulation']['replenishment']['model']
+   replenishment_rule=config['replenishment']['replenishment']['model']
    replenishment_rule_func = eval(replenishment_rule)
+   quantile =  config['replenishment']['quantiles']
 
-   quantile = 50
-
+   '''
+   do predictions and replenishment
+   '''
+   prediction_func(df,'PRODUCT_ID',5, 0)
    df['ORDER'] = df['PREDICTION'].apply(lambda x : replenishment_rule_func(0,0,quantile,x))
-
-   df = df.dropna()
 
    return df
