@@ -14,6 +14,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-y", "--yaml", help="yaml inputfile to test", type=str)
     parser.add_argument("-d", "--orderday", help="date of order", type=str)
+    parser.add_argument("-o", "--outputfile", help="name of outputfile", type=str)
+
     args = parser.parse_args()
 
     # parse config file
@@ -37,4 +39,4 @@ if __name__ == "__main__":
 
     print "--- %s seconds ---" % (end_time - start_time)
 
-    order_df.to_csv('order.csv', sep=';')
+    order_df.to_csv(args.outputfile+'.csv', sep=';')

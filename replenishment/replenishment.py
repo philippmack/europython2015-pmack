@@ -16,7 +16,7 @@ def order(df, config):
    '''
    do predictions and replenishment
    '''
-   prediction_window= arguments_partial['simulation']['prediction']['window']
+   prediction_window= config['replenishment']['prediction']['window']
    prediction_func(df,'PRODUCT_ID',prediction_window, 0)
    df['ORDER'] = df['PREDICTION'].apply(lambda x : replenishment_rule_func(0,0,quantile,x))
 
