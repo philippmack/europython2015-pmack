@@ -8,6 +8,7 @@ from config.validator import *
 import itertools
 import argparse
 import time
+import datetime
 
 if __name__ == "__main__":
 
@@ -19,7 +20,10 @@ if __name__ == "__main__":
 
    # parse config file
    sim_args = parse_yaml(args.yaml)
-   df = pd.read_csv(sim_args['simulation']['input_file'] ,sep=';')
+   startdate = datetime.datetime.strptime(sim_args['simulation']['startdate'],'%Y-%m-%d')
+   enddate = datetime.datetime.strptime(sim_args['simulation']['enddate'],'%Y-%m-%d')
+   df = pd.read_csv(sim_args['simulation']['input_file'] ,sep=';',parse_dates=['DATE'])
+   df = df[ (df['DATE']>=startdate) & (df['DATE']<=enddate)]
    df = df.sort(['PRODUCT_ID','DATE'])
    df = df.reset_index()
    sim_args['simulation_df'] = df

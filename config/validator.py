@@ -22,10 +22,10 @@ def check_date(datestring):
 simulation_schema=Schema({
     'quantiles': [All(Coerce(int), Range(1, 100), msg='not a valid quantile')],
     'prediction': {
-            'model': str,
-            'startdate': check_date,
-            'enddate': check_date
+            'model': str
      },
+    'startdate': check_date,
+    'enddate': check_date,
     'replenishment': {
              'model': str
     },
