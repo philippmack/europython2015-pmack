@@ -2,6 +2,7 @@ simulation :
     quantiles: [50,]
     prediction:
         model: 'rmean_prediction'
+        window: 5
     startdate: '2014-01-02'
     enddate: '2015-01-01'
     replenishment:

@@ -22,7 +22,8 @@ def check_date(datestring):
 simulation_schema=Schema({
     'quantiles': [All(Coerce(int), Range(1, 100), msg='not a valid quantile')],
     'prediction': {
-            'model': str
+            'model': str,
+            'window': int
      },
     'startdate': check_date,
     'enddate': check_date,
@@ -36,7 +37,8 @@ simulation_schema=Schema({
 replenishment_schema=Schema({
     'quantiles': [All(Coerce(int), Range(1, 100), msg='not a valid quantile')],
     'prediction': {
-            'model': str
+            'model': str,
+            'window': int
      },
     'replenishment': {
             'model': str

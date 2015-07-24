@@ -20,7 +20,8 @@ def simulate_per_quantile(quantile, arguments_partial):
 
    prediction = arguments_partial['simulation']['prediction']['model']
    prediction_func = eval(prediction)
-   prediction_func(df,'PRODUCT_ID',5, 0)
+   prediction_window= arguments_partial['simulation']['prediction']['window']
+   prediction_func(df,'PRODUCT_ID',prediction_window, 0)
 
    replenishment_rule=arguments_partial['simulation']['replenishment']['model']
    replenishment_rule_func = eval(replenishment_rule)
