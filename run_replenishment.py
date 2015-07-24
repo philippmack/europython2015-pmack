@@ -20,6 +20,7 @@ if __name__ == "__main__":
 
     # parse config file
     rep_args = parse_yaml(args.yaml)
+   
     test_file(rep_args, 'replenishment')
 
     start_time = time.time()
